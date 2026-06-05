@@ -270,6 +270,7 @@ fun LoginScreen(
                                     }
                                 } catch (e: Exception) {
                                     Log.e("LoginScreen", "Google Sign In Error", e)
+                                    android.widget.Toast.makeText(context, "Login gagal: ${e.message}", android.widget.Toast.LENGTH_SHORT).show()
                                 }
                             }
                         }

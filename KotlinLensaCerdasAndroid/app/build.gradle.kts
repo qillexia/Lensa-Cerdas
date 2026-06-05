@@ -20,6 +20,15 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        create("release") {
+            storeFile = file("../keystore/lensacerdas")
+            storePassword = "210906" // TODO: Ganti dengan password keystore Anda
+            keyAlias = "lensacerdas" // TODO: Ganti dengan alias keystore Anda 
+            keyPassword = "210906" // TODO: Ganti dengan password keystore Anda
+        }
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = true
@@ -28,6 +37,7 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            signingConfig = signingConfigs.getByName("release")
         }
     }
     compileOptions {

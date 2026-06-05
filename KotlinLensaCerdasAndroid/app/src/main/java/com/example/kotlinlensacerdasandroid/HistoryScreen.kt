@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.widget.Toast
 import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -111,9 +110,9 @@ fun HistoryScreen(
         val cachedJson = sharedPrefs.getString("history_$userId", null)
         if (cachedJson != null) {
             try {
-                val type = object : TypeToken<List<HistoryItem>>() {}.type
-                val cachedItems: List<HistoryItem> = gson.fromJson(cachedJson, type)
-                historyItems = cachedItems
+                // Menghindari penggunaan TypeToken yang sering crash karena R8/ProGuard Release
+                val cachedArray: Array<HistoryItem> = gson.fromJson(cachedJson, Array<HistoryItem>::class.java)
+                historyItems = cachedArray.toList()
                 if (historyItems.isNotEmpty()) {
                     isLoading = false
                 }

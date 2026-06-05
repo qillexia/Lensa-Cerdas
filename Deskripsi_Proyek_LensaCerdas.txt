@@ -1,0 +1,67 @@
+================================================================================
+          DESKRIPSI LENGKAP PROYEK LENSACERDAS
+================================================================================
+
+1. PENDAHULUAN
+LensaCerdas adalah sebuah aplikasi inovatif berbasis Android yang dirancang sebagai Asisten Dokumen dan Peringkas Teks Berbasis Kecerdasan Buatan (AI). Proyek ini dibangun dengan arsitektur "Full-Stack" modern yang mengintegrasikan aplikasi mobile berkinerja tinggi dengan backend serverless di cloud. Tujuan utama aplikasi ini adalah membantu pengguna memproses, mengekstrak, dan memahami berbagai bentuk informasi digital (teks panjang, dokumen PDF, gambar/foto, hingga tautan artikel web) menjadi ringkasan yang padat, akurat, dan mudah dipahami berkat integrasi dengan Google Gemini AI.
+
+2. ARSITEKTUR SISTEM
+Proyek ini terbagi menjadi dua komponen utama:
+A. Frontend (Aplikasi Android)
+   - Dibangun menggunakan bahasa pemrograman Kotlin.
+   - Menggunakan Jetpack Compose dengan Single-Activity Architecture untuk UI yang deklaratif, modern, dan sangat responsif.
+   - Mengusung desain premium dengan efek Glassmorphism dan tata letak Bento Grid yang memanjakan mata pengguna.
+   - Navigasi dinamis dan statis yang dioptimalkan menggunakan transisi memudar (fade) dan geser (slide) yang ringan memori.
+
+B. Backend (Server API)
+   - Menggunakan Node.js dengan framework Express.js.
+   - Dihosting dan dideploy secara "Serverless" di Vercel untuk skalabilitas dan keandalan yang tinggi.
+   - Menggunakan Supabase Cloud (PostgreSQL) sebagai basis data relasional untuk menyimpan data pengguna dan riwayat ringkasan secara aman.
+
+3. FITUR-FITUR UTAMA (SANGAT DETAIL)
+
+   A. Sistem Autentikasi Modern (Google Sign-In)
+      - Menggunakan teknologi terbaru Google Credential Manager API yang dioptimalkan untuk Android 14+.
+      - Alur login yang sangat mulus (one-tap login) yang langsung mengikat ID Google pengguna dengan database cloud (Supabase).
+
+   B. Meringkas Teks dengan AI (Gemini 2.5 Flash)
+      - Pengguna dapat mengetik atau menempelkan teks panjang secara manual.
+      - Menggunakan mesin AI Gemini 2.5 Flash dari Google untuk menghasilkan ringkasan yang cerdas dan sesuai konteks.
+      - Fitur "Custom Summary Style": Pengguna bisa memilih gaya bahasa (formal, santai, poin-poin) dan menentukan panjang ringkasan yang diinginkan.
+
+   C. Pemindai Gambar / OCR Cerdas (Optical Character Recognition)
+      - Menggunakan teknologi Google ML Kit (Vision Text).
+      - Pengguna dapat memotret buku/dokumen fisik lewat kamera atau memilih gambar dari galeri.
+      - Aplikasi akan secara instan mengubah teks pada gambar menjadi teks digital dan langsung meringkasnya.
+
+   D. Ekstraksi Dokumen PDF
+      - Menggunakan library iTextG untuk membaca dan mengekstrak teks di dalam dokumen PDF yang diunggah pengguna, baik dari penyimpanan lokal maupun unduhan, untuk kemudian dianalisis oleh AI.
+
+   E. Perangkum Tautan Web (Web URL Summarizer)
+      - Pengguna cukup menyalin tautan artikel atau berita dari browser.
+      - Backend akan mengekstrak konten dari URL tersebut dan AI akan menyajikan intisarinya tanpa mengharuskan pengguna membaca seluruh halaman web.
+
+   F. Text-to-Speech (TTS) - Fitur Suara
+      - Tersedia fitur "Dengar Ringkasan" di mana aplikasi akan membacakan hasil teks ringkasan layaknya asisten suara (audio playback), sangat berguna untuk aksesibilitas atau saat multitasking.
+
+   G. Riwayat Ringkasan Cloud (Cloud History)
+      - Semua hasil ringkasan otomatis tersimpan di database Supabase Cloud.
+      - Pengguna dapat mengakses riwayat pencarian mereka kapan saja dan dari perangkat Android mana saja selama login dengan akun yang sama.
+      - Menggunakan sistem Pagination pada backend agar pemuatan daftar riwayat sangat cepat dan tidak menguras kuota internet.
+
+   H. Ekspor & Bagikan PDF (Generate PDF)
+      - Hasil ringkasan tidak hanya bisa dibaca, namun bisa di-ekspor/di-generate kembali menjadi file PDF baru yang terlihat profesional menggunakan iTextG.
+      - Pengguna bisa langsung membagikan PDF tersebut ke WhatsApp, Email, dll.
+
+   I. Manajemen Riwayat Cerdas
+      - Pengguna dapat mengedit/memperbaiki kembali teks ringkasan yang ada.
+      - Fitur menghapus riwayat yang sudah tidak diperlukan dari cloud.
+
+4. OPTIMALISASI DAN PERFORMA TINGGI
+   - Ukuran Aplikasi (APK) Ringan: Menggunakan ProGuard/R8 untuk membuang kode tak terpakai dan mengompres aset.
+   - Manajemen Memori Aman: Penggunaan Kotlin Coroutines untuk mencegah kebocoran memori (memory leak) saat aplikasi mengambil data dari internet.
+   - Efisiensi UI: Menggunakan 'derivedStateOf' di Jetpack Compose agar antarmuka tidak menghitung ulang data secara berlebihan, sehingga suhu perangkat tetap terjaga dan hemat baterai.
+
+5. KESIMPULAN
+LensaCerdas bukan sekadar aplikasi pencatat biasa, melainkan asisten produktivitas lengkap yang memadukan keunggulan UI/UX modern di Android, kecerdasan buatan kelas atas, serta infrastruktur cloud yang kuat. Proyek ini sangat relevan untuk kebutuhan pelajar, mahasiswa, jurnalis, atau profesional yang harus mengolah informasi berkapasitas besar setiap hari secara efisien.
+================================================================================

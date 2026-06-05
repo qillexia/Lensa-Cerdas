@@ -19,7 +19,7 @@ router.post("/summarize", async (req, res) => {
         let styleInstruction = "secara padat dan jelas untuk mahasiswa";
         if (style === "santai") styleInstruction = "dengan gaya bahasa santai dan mudah dipahami anak muda";
         else if (style === "poin") styleInstruction = "dalam bentuk poin-poin penting (bullet points) yang terstruktur";
-        
+
         let lengthInstruction = "";
         if (length === "singkat") lengthInstruction = "Buat ringkasan yang sangat singkat (maksimal 1-2 paragraf pendek).";
         else if (length === "detail") lengthInstruction = "Berikan penjelasan yang detail dan komprehensif.";

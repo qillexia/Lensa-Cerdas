@@ -7,16 +7,80 @@
 -renamesourcefileattribute SourceFile
 
 # --- Retrofit & Gson ---
--keep class com.example.kotlinlensacerdasandroid.network.** { *; }
 -keepattributes Signature
 -keepattributes *Annotation*
+-keepattributes EnclosingMethod
+-keepattributes InnerClasses
+
+# Preserve semua class di network package
+-keep class com.example.kotlinlensacerdasandroid.network.** { *; }
+-keepclassmembers class com.example.kotlinlensacerdasandroid.network.** { *; }
+
+# Preserve specific model classes dengan semua members (properties, constructors, methods)
+-keep class com.example.kotlinlensacerdasandroid.network.LoginRequest { 
+    <init>(...);
+    *;
+}
+-keep class com.example.kotlinlensacerdasandroid.network.LoginResponse { 
+    <init>(...);
+    *;
+}
+-keep class com.example.kotlinlensacerdasandroid.network.UserData { 
+    <init>(...);
+    *;
+}
+-keep class com.example.kotlinlensacerdasandroid.network.SummarizeRequest { 
+    <init>(...);
+    *;
+}
+-keep class com.example.kotlinlensacerdasandroid.network.SummarizeResponse { 
+    <init>(...);
+    *;
+}
+-keep class com.example.kotlinlensacerdasandroid.network.SummaryData { 
+    <init>(...);
+    *;
+}
+-keep class com.example.kotlinlensacerdasandroid.network.HistoryResponse { 
+    <init>(...);
+    *;
+}
+-keep class com.example.kotlinlensacerdasandroid.network.HistoryItem { 
+    <init>(...);
+    *;
+}
+-keep class com.example.kotlinlensacerdasandroid.network.UpdateRequest { 
+    <init>(...);
+    *;
+}
+-keep class com.example.kotlinlensacerdasandroid.network.BaseResponse { 
+    <init>(...);
+    *;
+}
+
+# Preserve Gson dan TypeAdapter
+-keep class com.google.gson.** { *; }
+-keep class * extends com.google.gson.reflect.TypeToken { *; }
+-keepclassmembers class * extends com.google.gson.reflect.TypeToken { *; }
+-keepclassmembers class * {
+    @com.google.gson.annotations.SerializedName <fields>;
+}
 -dontwarn retrofit2.**
 -keep class retrofit2.** { *; }
 -keepclassmembers,allowshrinking,allowobfuscation interface * {
     @retrofit2.http.* <methods>;
 }
+-keepattributes Exceptions
 -dontwarn okhttp3.**
 -dontwarn okio.**
+
+# --- OkHttp3 ---
+-keep class okhttp3.** { *; }
+-keep interface okhttp3.** { *; }
+-dontwarn javax.annotation.**
+-dontwarn org.conscrypt.**
+-dontwarn org.bouncycastle.**
+-dontwarn org.openjsse.**
 
 # --- iTextG (PDF Reader & Writer) ---
 -keep class com.itextpdf.** { *; }
@@ -46,4 +110,22 @@
 
 # --- Keep Kotlin Metadata ---
 -keepattributes RuntimeVisibleAnnotations
+-keepattributes RuntimeInvisibleAnnotations
+-keepattributes RuntimeVisibleParameterAnnotations
+-keepattributes RuntimeInvisibleParameterAnnotations
 -keep class kotlin.Metadata { *; }
+-keepclassmembers class kotlin.Metadata {
+    public <methods>;
+}
+
+# --- Kotlin data class & synthetic methods ---
+-keepclassmembers class kotlin.** {
+    *** _clinit_(...);
+    *;
+}
+-keep class kotlin.** { *; }
+
+# Keep Kotlin functions and properties
+-keepclasseswithmembernames class kotlin.** {
+    native <methods>;
+}
